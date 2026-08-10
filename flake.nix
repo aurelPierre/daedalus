@@ -78,10 +78,6 @@
 
         modules = [
           self.nixosModules.daedalus
-
-          {
-            boot.loader.systemd-boot.enable = true;
-          }
         ];
       };
 

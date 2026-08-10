@@ -94,7 +94,7 @@ in
       };
     })
 
-    (mkIf cfg.level == "advanced" {
+    (mkIf (cfg.level == "advanced") {
       #advanced
     })
   ];
