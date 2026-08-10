@@ -95,5 +95,6 @@
       };
 
       checks.${system}.daedalus = self.nixosConfigurations.test.config.system.build.toplevel;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
     };
 }

@@ -1,12 +1,21 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkOption types mkIf mkMerge;
+  inherit (lib)
+    mkOption
+    types
+    mkIf
+    mkMerge
+    ;
   cfg = config.daedalus.security;
 in
 {
   options.daedalus.security = {
     level = mkOption {
-      type = types.enum [ "minimal" "intermediate" "advanced" ];
+      type = types.enum [
+        "minimal"
+        "intermediate"
+        "advanced"
+      ];
       default = "minimal";
       description = ''
         Security hardening level.
@@ -24,7 +33,7 @@ in
       '';
     };
   };
-  
+
   config = mkMerge [
     (mkIf (cfg.level == "intermediate" || cfg.level == "advanced") {
       # R8 ANSSI
@@ -43,7 +52,7 @@ in
       ];
 
       boot.kernel.sysctl = {
-        # R9 ANSSI 
+        # R9 ANSSI
         "kernel.dmesg_restrict" = "1";
         "kernel.kptr_restrict" = "2";
         "kernel.pid_max" = "1048576";
