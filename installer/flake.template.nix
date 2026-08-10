@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    daedalus.url = "github:aurelPierre/NixOsConfig";
+    daedalus.url = "github:aurelPierre/daedalus";
     daedalus.inputs.nixpkgs.follows = "nixpkgs";
   };
 
