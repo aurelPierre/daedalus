@@ -73,7 +73,7 @@
       };
     in
     {
-      nixosConfigurations.test = pkgs.lib.nixosSystem {
+      nixosConfigurations.test = nixpkgs.lib.nixosSystem {
         inherit system;
 
         modules = [
@@ -85,7 +85,7 @@
         imports = [
           disko.nixosModules.disko
           lanzaboote.nixosModules.lanzaboote
-          ./default.nix
+          ./modules
         ];
       };
 
