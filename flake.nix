@@ -73,7 +73,7 @@
       };
     in
     {
-      nixosConfigurations.test = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.test = pkgs.lib.nixosSystem {
         inherit system;
 
         modules = [
@@ -96,5 +96,12 @@
 
       checks.${system}.daedalus = self.nixosConfigurations.test.config.system.build.toplevel;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+
+      nixosTests.basic = pkgs.testers.runNixOSTest {
+        imports = [
+          ./tests/basic.nix
+        ];
+      };
+
     };
 }
