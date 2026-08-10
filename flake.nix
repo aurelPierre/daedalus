@@ -73,6 +73,18 @@
       };
     in
     {
+      nixosConfigurations.test = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          self.nixosModules.daedalus
+
+          {
+            boot.loader.systemd-boot.enable = true;
+          }
+        ];
+      };
+
       nixosModules.daedalus = {
         imports = [
           disko.nixosModules.disko
@@ -85,5 +97,7 @@
         type = "app";
         program = "${install}/bin/install";
       };
+
+      checks.${system}.daedalus = self.nixosConfigurations.test.config.system.build.toplevel;
     };
 }
