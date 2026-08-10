@@ -1,22 +1,15 @@
 {
   name = "daedalus-basic";
 
-  nodes.machine = { pkgs, ... }: {
+  nodes.machine = { ... }: {
     imports = [
       ../default.nix
     ];
-
-    networking.hostName = "daedalus-test";
 
     users.users.test = {
       isNormalUser = true;
       password = "test";
     };
-
-    nix.settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
 
     virtualisation.memorySize = 2048;
   };
