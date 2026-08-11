@@ -1,9 +1,10 @@
+{ self, ... }:
 {
   name = "daedalus-basic";
 
-  nodes.machine = { ... }: {
+  nodes.machine = {
     imports = [
-      ../default.nix
+      self.nixosModules.daedalus
     ];
 
     users.users.test = {

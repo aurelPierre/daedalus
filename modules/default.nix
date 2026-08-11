@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./filesystems
+    ./audio
+    ./boot
     ./gui
+    ./localization
+    ./network
     ./security
     ./tools
-    ./network
     ./users
-    ./audio
-    ./localization
   ];
 
   # potential fix for igc pcie disconnect
@@ -16,7 +16,7 @@
   #  "pcie_ports=native"
   #];
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"

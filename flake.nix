@@ -4,9 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -83,7 +80,6 @@
 
       nixosModules.daedalus = {
         imports = [
-          disko.nixosModules.disko
           lanzaboote.nixosModules.lanzaboote
           ./modules
         ];
@@ -97,11 +93,11 @@
       checks.${system}.daedalus = self.nixosConfigurations.test.config.system.build.toplevel;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
-      nixosTests.basic = pkgs.testers.runNixOSTest {
-        imports = [
-          ./tests/basic.nix
-        ];
-      };
+      nixosTests.basic = pkgs.testers.runNixOSTest (
+        import ./tests/basic.nix {
+          inherit self;
+        }
+      );
 
     };
 }

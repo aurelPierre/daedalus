@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     daedalus.url = "github:aurelPierre/daedalus";
     daedalus.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -20,6 +23,7 @@
         system = "x86_64-linux";
 
         modules = [
+          disko.nixosModules.disko
           daedalus.nixosModules.daedalus
 
           ./hardware-configuration.nix
