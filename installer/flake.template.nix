@@ -15,7 +15,7 @@
     {
       self,
       nixpkgs,
-      disko
+      disko,
       daedalus,
       ...
     }:
