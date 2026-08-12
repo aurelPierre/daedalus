@@ -37,7 +37,7 @@
 
           echo "[DDL] Generating disk configuration..."
 
-          ${./installer/generateDisk.py} --output /tmp/disk.nix --extra-experimental-features "nix-command flakes"
+          ${./installer/generateDisk.py} --output /tmp/disk.nix
 
           echo "[DDL] Formatting and mounting disks..."
 
