@@ -9,12 +9,14 @@
 
     daedalus.url = "github:aurelPierre/daedalus";
     daedalus.inputs.nixpkgs.follows = "nixpkgs";
-  };
+    daedalus.inputs.disko.follows = "disko";  
+};
 
   outputs =
     {
       self,
       nixpkgs,
+      disko
       daedalus,
       ...
     }:
