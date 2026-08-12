@@ -12,6 +12,7 @@
     {
       self,
       nixpkgs,
+      disko,
       lanzaboote,
       ...
     }:
